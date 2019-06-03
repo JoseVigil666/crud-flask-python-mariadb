@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>MicroFox</title>
+    <!-- Background -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- bootstrapcdn -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- MFox Style -->
+    <style>
+
+      /* Menu push*/
+      body {
+          font-family: "Lato", sans-serif;
+      }
+
+      .MFsidenav {
+          height: 100%;
+          width: 0;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: #111;
+          overflow-x: hidden;
+          transition: 0.5s;
+          padding-top: 60px;
+      }
+
+      .MFsidenav a {
+          padding: 8px 8px 8px 32px;
+          text-decoration: none;
+          font-size: 25px;
+          color: #818181;
+          display: block;
+          transition: 0.3s;
+      }
+
+      .MFsidenav a:hover {
+          color: #f1f1f1;
+      }
+
+      .MFsidenav .MFclosebtn {
+          position: absolute;
+          top: 0;
+          right: 25px;
+          font-size: 36px;
+          margin-left: 50px;
+      }
+
+      #main {
+          transition: margin-left .5s;
+          padding: 16px;
+      }
+
+      @media screen and (max-height: 450px) {
+        .MFsidenav {padding-top: 15px;}
+        .MFsidenav a {font-size: 18px;}
+      }
+
+
+
+      /* Icons */
+
+      body {margin:0;}
+
+      .MFicon-bar {
+          width: 50%;
+          background-color: #333;
+          overflow: auto;
+      }
+
+      .MFicon-bar a {
+          float: left;
+          width: 10%;
+          text-align: center;
+          padding: 12px 0;
+          transition: all 0.3s ease;
+          color: white;
+          font-size: 36px;
+      }
+
+      .MFicon-bar a:hover {
+          background-color: #000;
+      }
+
+      .MFactive-bar {
+          background-color: #4CAF50 !important;
+      }
+
+      /* Menu */
+      .MFnavbar {
+          overflow: hidden;
+          background-color: #333;
+          font-family: Arial;
+      }
+
+      .MFnavbar a {
+          float: left;
+          font-size: 16px;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+      }
+
+      .MFdropdown {
+          float: left;
+          overflow: hidden;
+      }
+
+      .MFdropdown .MFdropbtn {
+          font-size: 16px;
+          border: none;
+          outline: none;
+          color: white;
+          padding: 14px 16px;
+          background-color: inherit;
+      }
+
+      .MFnavbar a:hover, .MFdropdown:hover .MFdropbtn {
+          background-color: black;
+      }
+
+      .MFdropdown-content {
+          display: none;
+          position: absolute;
+          background-color: DarkGray ;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+      }
+
+      .MFdropdown-content a {
+          float: none;
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+      }
+
+      .MFdropdown-content a:hover {
+          background-color: #ddd;
+      }
+
+      .MFdropdown:hover .MFdropdown-content {
+          display: block;
+      }
+
+
+      /* background image */
+      body, html {
+          height: 100%;
+          margin: 0;
+      }
+
+      .MFbg {
+          /* The image used */
+          background-image: url({{ url_for('static', filename='cryptokersoft.jpg') }});
+
+          /* Full height */
+          height: 100%;
+
+          /* Center and scale the image nicely */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+
+
+      /* background Parallax */
+      body, html {
+        height: 100%;
+        margin: 0;
+        /* font: 400 15px/1.8 "Lato", sans-serif; influye en Menu*/
+        font-family: "Lato", sans-serif
+        color: #777;
+      }
+
+      .MFbgimg-1, .MFbgimg-2, .MFbgimg-3 {
+        position: relative;
+        opacity: 0.99;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+      }
+      .MFbgimg-1 {
+        background-image: url({{ url_for('static', filename='cryptokersoft.jpg') }});
+        min-height: 100%;
+      }
+
+      .MFbgimg-2 {
+        background-image: url({{ url_for('static', filename='bitchart.jpg') }});
+        min-height: 600px;
+      }
+
+      .MFbgimg-3 {
+        background-image: url({{ url_for('static', filename='cc7.png') }});
+        opacity: 0.75;
+        min-height: 600px;
+      }
+
+      .MFcaption {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        color: #000;
+      }
+
+      .MFcaption2 {
+        position: absolute;
+        left: 0;
+        top: 5%;
+        width: 100%;
+        padding: 30px;
+        text-align: center;
+        color: #000;
+      }
+
+      .MFcaption span.MFborder {
+        background-color: #111;
+        color: #fff;
+        padding: 18px;
+        font-size: 25px;
+        letter-spacing: 10px;
+      }
+
+      h3 {
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        font: 20px "Lato", sans-serif;
+        color: #111;
+      }
+
+      /* Turn off parallax scrolling for tablets and phones */
+      @media only screen and (max-device-width: 1024px) {
+          .MFbgimg-1, .MFbgimg-2, .MFbgimg-3 {
+              background-attachment: scroll;
+          }
+      }
+      /* Imagen Text Block*/
+      .MFtext-block {
+          position: absolute;
+          bottom: 45px;
+          right: 20px;
+          background-color: black;
+          color: white;
+          padding-left: 20px;
+          padding-right: 20px;
+      }
+
+      /* Table for cursors*/
+      .MFtableCursor {
+          font-family:sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+          margin: 0 auto;
+      }
+
+      .MFtableCursor td:hover {
+          background-color : #400080;
+      }
+
+      tr:hover {
+          cursor: pointer;
+          background-color : #666666;
+      }
+
+      th {
+          border: 1px solid #202020;
+          color:White;
+          text-align: left;
+          padding: 8px;
+      }
+
+      td {
+          border: 1px solid #252525;
+          background-color: #202020;
+          color: green;
+          text-align: left;
+          padding: 1px;
+      }
+
+      tr:nth-child(even) {
+          color: green;
+          background-color: #202020;
+      }
+
+      /* examples*/
+      .link         { color: #FF6347; } /* CSS link color (tomato) */
+      .link:hover   { color: #00FF00; } /* CSS link hover (green) */
+      .link:active  { color: #00FF00; } /* CSS link hover (green) */
+
+      .MFbtn-primary {
+          color: var(--button-color);
+          background-color: var(--button-background-color);
+          border-color: var(--blue);
+          border-radius: var(--border-radius);
+        }
+
+        .MFbtn-primary:hover {
+          box-shadow: inset 0 0 0 20rem var(--darken-1);
+        }
+
+        .MFbtn-primary:active {
+          box-shadow: inset 0 0 0 20rem var(--darken-2),
+            inset 0 3px 4px 0 var(--darken-3),
+            0 0 1px var(--darken-2);
+        }
+
+        .MFbtn-primary:disabled,
+        .MFbtn-primary.is-disabled {
+          opacity: .5;
+        }
+
+        :root {
+          --blue: #0074d9;
+          --button-color: #fff;
+          --button-background-color: var(--blue);
+          --border-radius: 3px;
+          --darken-1: rgba(0, 0, 0, .0625);
+          --darken-2: rgba(0, 0, 0, .125);
+          --darken-3: rgba(0, 0, 0, .25);
+        }
+
+        .MF-form
+        {
+            min-width: 0;
+            width: 400px;
+            color:green;
+        }
+
+        .MF-form-s
+        {
+            min-width: 0;
+            width: 200px;
+            color:green;
+        }
+
+        .MF-image {
+          /* The image used */
+
+
+          background-image: {{ url_for('static', filename='cryptokersoft.jpg') }};
+
+
+          /* Full height */
+          height: 50%;
+          width: 70%;
+
+          /* Center and scale the image nicely */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+
+      </style>
+
+
+  </head>
+
+  <body style="background-color:rgb(20, 20, 20);">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('editor')
+    </script>
+
+    {% include 'includes/_menu.html' %}
+    <div class="container">
+      {% include 'includes/messages.html' %}
+    </div>
+    {% block body%} {% endblock%}
+  </body>
+</html>

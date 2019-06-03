@@ -1,0 +1,95 @@
+{% extends 'MFlayout.html' %}
+
+{% block body %}
+  {% from "includes/formhelpers.html" import render_field %}
+
+  {% if title == 'cursor' %}
+        <div class="container">
+          <h3 style="color:green";>Brands</h3>
+          <!-- Add new register
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add New</button>
+          -->
+
+          <a role="button" class="btn btn-primary" href="/brands_add">Add New</a>
+          <a role="button" class="btn btn-primary" href="/brands">Refresh &nbsp;<i class="fa fa-refresh"></i></a>
+          <a role="button" class="btn btn-primary" href="">Print &nbsp; <i class="fa fa-print">  </i></a>
+          <a role="button" class="btn btn-primary" href="/products">Search &nbsp;<i class="fa fa-search"> </i></a>
+          <table class="MFtableCursor">
+            <thead>
+              <tr>
+                <th style="text-align:center; width:60px " >Actions</th>
+                <th>Brand Name</th>
+                <th style="text-align:center;">Total Products</th>
+                <th style="text-align:center;">Total Sale</th>
+                <th style="text-align:center;">Total Purchases</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for x in cp %}
+                <tr>
+                  <td><a href="brands_upd/{{x[0]}}"   data-toggle="tooltip" data-placement="Edit"   title="Edit"   class="fa fa-edit"   style=" color: tomato">&nbsp;&nbsp;</a>
+                      <a href=""                      data-toggle="tooltip" data-placement="Clone"  title="Clone"  class="fa fa-clone"  style=" color: tomato"">&nbsp;&nbsp;</a>
+                      <a href="brands_del/{{x[0]}}"   data-toggle="tooltip" data-placement="Remove" title="Remove" class="fa fa-remove" style=" color: Red"">&nbsp;</a>
+                  </td>
+                  <td>{{x[0]}}</td>
+                  <td style="text-align:center;">{{x[1]}}</td>
+                  <td style="text-align:center;">{{x[2]}}</td>
+                  <td style="text-align:center;">{{x[3]}}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <h3 style="color:green";>Preferences Brands</h3>
+
+  {% else %}
+
+    <div class="container" >
+      <h3 style="color:green";>{{ title }} Brand</h3>
+
+              <form method="POST" action="" >
+
+                <div class="MF-form">
+                  {{render_field(form.sbrand, class_="form-control")}}
+                </div>
+                <p></p>
+                <p><input type="submit" class="btn btn-primary" value="Submit">
+                   <a role="button" class="btn btn-danger" href="/brands">Return without Save</a>
+                </p>
+
+                <!-- <image class="MF-image" src="{{ url_for('static', filename='denture.jpg') }}"> -->
+
+              </form>
+
+
+    </div>
+
+  {% endif%}
+
+
+    <!-- Add new register
+    <div class="container" >
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Register a new Brand</h4>
+            </div>
+
+            <div class="modal-body">
+                <a role="button" class="btn btn-primary" href="/brands_add">Continue</a>
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    -->
+  </div>
+{% endblock%}

@@ -1,0 +1,35 @@
+{% extends 'MFlayout.html' %}
+  flash('New entry was successfully posted')
+{% block body %}
+
+  <div class="jumbotron text-center">
+    <h1>Products</h1>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Sku</th>
+          <th>Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in cp %}
+          <tr>
+            <td>{{x.idproduct}}</td>
+            <td>{{x.nameproduct}}</td>
+            <td>{{x[0]}}</td>
+            <td>{{x[1]}}</td>
+            <td>{{x[2]}}</td>
+            <td>{{x[3]}}</td>
+            <td><a href="" class="btn btn-default pull-right">Edit</a></td>
+            <td><a href="" class="btn btn-danger pull-right">Delete</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      Hola
+  </div>
+
+{% endblock%}
