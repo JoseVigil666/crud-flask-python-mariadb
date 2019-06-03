@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS MFbrands (
+brand VARCHAR(25) PRIMARY KEY,
+totalproducts SMALLINT DEFAULT 0,
+totalsales DECIMAL DEFAULT 0,
+totalpurchases DECIMAL DEFAULT 0,
+usercreate CHAR(20) DEFAULT 'ADMIN',
+datecreate DATETIME DEFAULT current_date,
+userlastupdate CHAR(20) DEFAULT 'ADMIN',
+datelastupdate DATETIME DEFAULT current_date);

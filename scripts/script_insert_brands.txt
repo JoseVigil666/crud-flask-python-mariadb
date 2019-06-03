@@ -1,0 +1,4 @@
+INSERT INTO db_mfox.MFbrands ( brand, totalproducts, totalsales, totalpurchases, usercreate, datecreate, userlastupdate, datelastupdate  ) VALUES ('Strauss',0,0,0,'admin','2018-01-01 00:00:01','admin','2018-01-01 00:00:01');
+INSERT INTO db_mfox.MFbrands ( brand, totalproducts, totalsales, totalpurchases, usercreate, datecreate, userlastupdate, datelastupdate  ) VALUES ('Ivoclar',0,0,0,'admin','2018-01-01 00:00:01','admin','2018-01-01 00:00:01');
+INSERT INTO db_mfox.MFbrands ( brand, totalproducts, totalsales, totalpurchases, usercreate, datecreate, userlastupdate, datelastupdate  ) VALUES ('GC',0,0,0,'admin','2018-01-01 00:00:01','admin','2018-01-01 00:00:01');
+INSERT INTO db_mfox.MFbrands ( brand, totalproducts, totalsales, totalpurchases, usercreate, datecreate, userlastupdate, datelastupdate  ) VALUES ('Defend',0,0,0,'admin','2018-01-01 00:00:01','admin','2018-01-01 00:00:01');

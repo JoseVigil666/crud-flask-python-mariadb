@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS MFcustomers (
+idcustomer INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+namecustomer VARCHAR(100) NOT NULL UNIQUE KEY,
+address VARCHAR(100),
+city VARCHAR(50),
+state VARCHAR(50),
+zipcode VARCHAR(5),
+email   VARCHAR(70),
+phonenumber VARCHAR(15),
+usercreate CHAR(20),
+datecreate DATETIME,
+userlastupdate CHAR(20),
+datelastupdate DATETIME );
+
