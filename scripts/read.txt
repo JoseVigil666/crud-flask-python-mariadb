@@ -1,0 +1,1 @@
+script for create db, tables, in mariadb
